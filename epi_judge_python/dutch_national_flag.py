@@ -1,3 +1,15 @@
+""" 5.1 Dutch national Flag
+Write a program that takes an array A and an index i rnto A, and rearranges the elements such
+that all elements less than A[r] (the "pivot") appear first, followed by elements equal to the pivot,
+followed by elements greater than the pivot.
+
+Raises:
+    TestFailure: [description]
+    TestFailure: [description]
+
+Returns:
+    [type] -- [description]
+"""
 import functools
 from typing import List
 
