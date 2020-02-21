@@ -18,8 +18,25 @@ from test_framework import generic_test
 def plus_one(A: List[int]) -> List[int]:
     # TODO - you fill in here.
     # A - [1, 2, 9]
+    carry_over = 0
+    initial_element = True
+    carry_over_temp = 0
 
-    return
+    for index in range(len(A)):
+        if initial_element:
+            carry_over = 1 if A[-1-index] + 1 > 9 else 0
+            initial_element = False
+            A[-1-index] = (A[-1-index] + 1) % 10
+
+        else:
+            carry_over_temp = 1 if A[-1-index] + carry_over > 9 else 0
+            A[-1-index] = (A[-1-index] + carry_over) % 10
+            carry_over = carry_over_temp
+
+    if carry_over == 1:
+        A.insert(0, 1)
+
+    return A
 
 
 if __name__ == '__main__':

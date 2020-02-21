@@ -1,3 +1,13 @@
+"""
+Write a program which takes as input a sorted array and updates it so that all duplicates have been
+removed and the remaining elements have been shifted left to fill the emptied indices. Return the
+number of valid elements. Many languages have library functions for performing this operation you
+cannot use these functions
+
+Returns:
+    List -- list with unique elements
+"""
+
 import functools
 from typing import List
 
@@ -8,7 +18,17 @@ from test_framework.test_utils import enable_executor_hook
 # Returns the number of valid entries after deletion.
 def delete_duplicates(A: List[int]) -> int:
     # TODO - you fill in here.
-    return 0
+
+    if not A:
+        return 0
+
+    temp_index = 1
+    for i in range(1, len(A)):
+        if A[temp_index - 1] != A[i]:
+            A[temp_index] = A[i]
+            temp_index += 1
+
+    return temp_index
 
 
 @enable_executor_hook
