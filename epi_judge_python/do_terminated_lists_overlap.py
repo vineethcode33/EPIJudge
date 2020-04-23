@@ -1,3 +1,9 @@
+"""
+Write a Program that takes two cycle-free singly linked lists, and determines if
+there exists a node that is common to both lists.
+
+"""
+
 import functools
 
 from list_node import ListNode
@@ -8,7 +14,27 @@ from test_framework.test_utils import enable_executor_hook
 
 def overlapping_no_cycle_lists(l0: ListNode, l1: ListNode) -> ListNode:
     # TODO - you fill in here.
-    return ListNode()
+
+    def get_length(node):
+        count = 0
+        while node:
+            count += 1
+            node = node.next
+        return count
+
+    lenght_node_zero = get_length(l0)
+    lenght_node_one = get_length(l1)
+
+    if lenght_node_zero > lenght_node_one:
+        l0, l1 = l1, l0
+
+    for _ in range(abs(lenght_node_one-lenght_node_zero)):
+        l1 = l1.next
+
+    while l1 and l0 and l1 is not l0:
+        l1, l0 = l1.next, l0.next
+
+    return l0
 
 
 @enable_executor_hook

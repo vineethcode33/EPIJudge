@@ -1,5 +1,7 @@
 # EPI
 
+> Notation: ~~Complted~~, DidNotAttempt, **Failed**
+
 ####Arrays
 
 - 02/18/2020
@@ -19,17 +21,41 @@
 ---
 
 ####Strings
-6.1, 6.2, 6.4, 6.5, 6.6 6.7, 6.8, 6.10
+
+- 02/21/2020
+  - ~~6.1~~ might be a wrong approach
+  - 6.2
+  - 6.4
+  - 6.5
+  - 6.6
+  - 6.7
+  - 6.8
+  - 6.10
 
 ---
 
 ####LinkedLists
-7.1, 7.2, 7.3, 7.4, 7.7, 7.10, 7.11
+
+- 02/24/2020
+  - ~~7.1 sorted_lists_merge.py~~ redo
+  - ~~7.2 reverse_sublist.py~~ redo
+  - ~~7.3 is_list_cyclic.py~~
+  - ~~7.4 do_terminated_lists_overlap.py~~
+  - ~~7.7 delete+kth_last_from_list.py~~
+  - ~~7.10 even_odd_list_merge.py~~
+  - 7.11 is_list_palindromic.py
 
 ---
 
 ####Stacks and Queues
-8.1, 8.2, 8.6, 8.7, 8.3, 8.8, 8.4
+
+- 8.1
+- 8.2
+- 8.6
+- 8.7
+- 8.3
+- 8.8
+- 8.4
 
 ---
 

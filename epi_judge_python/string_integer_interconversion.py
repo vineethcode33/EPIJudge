@@ -1,15 +1,29 @@
+"""
+Implement an integer to string conversion function, and a string to integer conversison function,
+For example, if the input to the first function is the integer 314,it should retum the string "31.4" and
+if the input to the second function is the string "314" it should return the integer 314.
+
+Raises:
+    TestFailure: [description]
+    TestFailure: [description]
+
+Returns:
+    [type] -- [description]
+"""
+
+
 from test_framework import generic_test
 from test_framework.test_failure import TestFailure
 
 
 def int_to_string(x: int) -> str:
     # TODO - you fill in here.
-    return '0'
+    return str(x)
 
 
 def string_to_int(s: str) -> int:
     # TODO - you fill in here.
-    return 0
+    return int(s)
 
 
 def wrapper(x, s):
