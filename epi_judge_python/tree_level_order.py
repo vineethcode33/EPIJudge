@@ -6,6 +6,7 @@ from test_framework import generic_test
 
 def binary_tree_depth_order(tree: BinaryTreeNode) -> List[List[int]]:
     # TODO - you fill in here.
+    print(tree)
     return []
 
 
