@@ -6,12 +6,39 @@ from test_framework import generic_test
 from test_framework.binary_tree_utils import must_find_node
 from test_framework.test_failure import TestFailure
 from test_framework.test_utils import enable_executor_hook
+from pprint import pprint
+from collections import namedtuple
 
 
 def lca(node0: BinaryTreeNode,
         node1: BinaryTreeNode) -> Optional[BinaryTreeNode]:
-    # TODO - you fill in here.
-    return None
+
+    def get_depth(node):
+        if not node:
+            return 0
+        depth = 0
+        while node:
+            depth += 1
+            node = node.parent
+        return depth
+
+    depth_0, depth_1 = get_depth(node0), get_depth(node1)
+    diff_depth = abs(depth_0-depth_1)
+
+    def traverse_depth(node, diff_depth):
+        while diff_depth:
+            node = node.parent
+            diff_depth -= 1
+        return node
+
+    if depth_0 < depth_1:
+        node1 = traverse_depth(node1, diff_depth)
+    elif depth_1 < depth_0:
+        node0 = traverse_depth(node0, diff_depth)
+
+    while not node1 == node0:
+        node0, node1 = node0.parent, node1.parent
+    return node0
 
 
 @enable_executor_hook
