@@ -13,25 +13,24 @@ from collections import namedtuple
 def lca(tree: BinaryTreeNode, node0: BinaryTreeNode,
         node1: BinaryTreeNode) -> Optional[BinaryTreeNode]:
 
-    Status = namedtuple('Status', ('number_of_nodes', 'ancestor'))
+    status = namedtuple("staus", ("noNode", "parent"))
 
-    def lca_helper(tree, node0, node1):
+    def getLca(tree, node0, node1):
         if not tree:
-            return Status(0, None)
+            return status(0, None)
 
-        left_result = lca_helper(tree.left, node0, node1)
-        if left_result.number_of_nodes == 2:
-            return left_result
+        left_sub_tree = getLca(tree.left, node0, node1)
+        if left_sub_tree.noNode == 2:
+            return left_sub_tree
+        right_sub_tree = getLca(tree.right, node0, node1)
+        if right_sub_tree.noNode == 2:
+            return right_sub_tree
 
-        right_result = lca_helper(tree.right, node0, node1)
-        if right_result.number_of_nodes == 2:
-            return right_result
+        noNode = left_sub_tree.noNode + right_sub_tree.noNode + \
+            int(tree == node0) + int(tree == node1)
+        return status(noNode, tree if noNode == 2 else None)
 
-        number_of_nodes = left_result.number_of_nodes + \
-            right_result.number_of_nodes + \
-            int(tree is node0) + int(tree is node1)
-        return Status(number_of_nodes, tree if number_of_nodes == 2 else None)
-    return lca_helper(tree, node0, node1).ancestor
+    return getLca(tree, node0, node1).parent
 
 
 @enable_executor_hook

@@ -12,33 +12,16 @@ from collections import namedtuple
 
 def lca(node0: BinaryTreeNode,
         node1: BinaryTreeNode) -> Optional[BinaryTreeNode]:
-
-    def get_depth(node):
-        if not node:
-            return 0
-        depth = 0
-        while node:
-            depth += 1
-            node = node.parent
-        return depth
-
-    depth_0, depth_1 = get_depth(node0), get_depth(node1)
-    diff_depth = abs(depth_0-depth_1)
-
-    def traverse_depth(node, diff_depth):
-        while diff_depth:
-            node = node.parent
-            diff_depth -= 1
-        return node
-
-    if depth_0 < depth_1:
-        node1 = traverse_depth(node1, diff_depth)
-    elif depth_1 < depth_0:
-        node0 = traverse_depth(node0, diff_depth)
-
-    while not node1 == node0:
-        node0, node1 = node0.parent, node1.parent
-    return node0
+    stack = {}
+    temp = node0
+    while temp is not None:
+        stack[temp] = 1
+        temp = temp.parent
+    while node1:
+        if node1 in stack:
+            return node1
+        node1 = node1.parent
+    return None
 
 
 @enable_executor_hook

@@ -5,26 +5,24 @@ from collections import namedtuple
 
 
 def is_balanced_binary_tree(tree: BinaryTreeNode) -> bool:
-
-    BalancedWithHeight = namedtuple(
-        "BalancedWithHeight", ('balanced', 'height'))
+    isBalanced_height = namedtuple("isBalanced_height", ("balanced", "height"))
 
     def check_balanced(tree):
         if not tree:
-            return BalancedWithHeight(True, -1)
+            return isBalanced_height(True, -1)
 
         left_status = check_balanced(tree.left)
-
         if not left_status.balanced:
-            return BalancedWithHeight(False, 0)
+            return isBalanced_height(False, 0)
 
-        right_result = check_balanced(tree.right)
-        if not right_result.balanced:
-            return BalancedWithHeight(False, 0)
+        right_status = check_balanced(tree.right)
+        if not right_status.balanced:
+            return isBalanced_height(False, 0)
 
-        height = max(left_status.height, right_result.height)+1
-        is_balanced = abs(left_status.height - right_result.height) <= 1
-        return BalancedWithHeight(is_balanced, height)
+        isBalanced = abs(left_status.height - right_status.height) <= 1
+        height = max(left_status.height, right_status.height) + 1
+        return isBalanced_height(isBalanced, height)
+
     return check_balanced(tree).balanced
 
 
